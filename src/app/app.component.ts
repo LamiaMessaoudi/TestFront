@@ -28,17 +28,19 @@ export class AppComponent implements OnInit {
   }
   getTotalAgentCount(){
       this.agentServiceService.getTotalAgent().subscribe((data:number)=>{
-      console.log(data)
       this.totalAgent = data ;
+    },(error)=>{
+      alert("check backend side");
     })
   }
 
   getTotalAgentCountByStatus(){
     this.agentServiceService.getTotalAgentByStatus().subscribe((data:AgentCount[])=>{
-      console.log(data)
       this.totalAgentByStatus = data ;
       this.updateValues();
 
+    },(error)=>{
+      alert("check backend side");
     })
   }
 
@@ -51,7 +53,6 @@ export class AppComponent implements OnInit {
     });
     this.agentByStatusStatic = statisticAgent;
 
-    console.log(this.agentByStatusStatic)
 
   }
 }
